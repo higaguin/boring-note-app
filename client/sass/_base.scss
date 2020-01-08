@@ -1,25 +1,33 @@
 :root {
-  --background-color: #eeeeee;
-  --font-dark-grey: #bdbdbd;
+	--background-color: #f0ecf4;
+	--font-dark-grey: #bdbdbd;
 }
 
 * {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 *,
 *::after,
 *::before {
-  box-sizing: inherit;
+	box-sizing: inherit;
 }
 
 html {
-  box-sizing: border-box;
-  font-size: 100%;
+	box-sizing: border-box;
+	font-size: 100%;
 }
 
 body {
-  font-family: "Source Sans Pro", sans-serif;
-  background-color: var(--background-color);
+	font-family: "Source Sans Pro", sans-serif;
+	background-color: var(--background-color);
+}
+
+#root {
+	& > div:first-child {
+		height: 100%;
+		width: 100%;
+		position: absolute;
+	}
 }
