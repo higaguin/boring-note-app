@@ -1,27 +1,28 @@
 {
-  "name": "server",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js",
-    "server": "nodemon --legacy-watch index.js",
-    "dev": "npm run server",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "dependencies": {
-    "express": "*",
-    "mongoose": "*",
-    "nodemon": "*",
-    "passport": "*",
-    "passport-local": "*",
-    "passport-jwt": "*",
-    "jsonwebtoken": "*",
-    "passport-facebook": "*",
-    "body-parser": "*",
-    "passport-facebook-token": "*",
-    "cors": "*"
-  },
-  "author": "higaguin",
-  "license": "ISC"
+	"name": "server",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js",
+		"server": "nodemon --legacy-watch index.js",
+		"dev": "npm run server",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"dependencies": {
+		"express": "*",
+		"mongoose": "*",
+		"nodemon": "*",
+		"passport": "*",
+		"passport-local": "*",
+		"passport-jwt": "*",
+		"jsonwebtoken": "*",
+		"passport-facebook": "*",
+		"body-parser": "*",
+		"passport-facebook-token": "*",
+		"cors": "*",
+		"joi": "*"
+	},
+	"author": "higaguin",
+	"license": "ISC"
 }
