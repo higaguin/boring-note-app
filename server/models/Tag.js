@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const tagSchema = new Schema({
-	title: { type: String, unique: true },
-	user: { type: Schema.ObjectId, ref: "users", unique: true }
+	title: { type: String },
+	user: { type: Schema.ObjectId, ref: "users", unique: false }
 });
 
 const tags = mongoose.model("tags", tagSchema);

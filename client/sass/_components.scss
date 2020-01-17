@@ -36,6 +36,11 @@
 	padding: 5px;
 }
 
+.tag-form-container {
+	background-color: var(--font-dark-grey);
+	padding: 1rem;
+}
+
 .btn {
 	border: none;
 	border-radius: 0.5rem;
@@ -46,6 +51,23 @@
 		background-color: #5c6bc0;
 		color: white;
 	}
+
+	&--naked {
+		background-color: transparent;
+		color: white;
+	}
+}
+
+.my-facebook-button-class {
+	border: none;
+	border-radius: 0.5rem;
+	font-family: "Source Sans Pro", sans-serif;
+	font-size: 1rem;
+	padding: 1rem 3rem;
+	background-color: #5146b5;
+	color: white;
+	letter-spacing: 1.5px;
+	font-weight: bold;
 }
 
 .add-note {
@@ -57,6 +79,65 @@
 
 	.fa-plus {
 		margin-right: 1rem;
+	}
+}
+
+.tag-list {
+	display: flex;
+	overflow-x: scroll;
+
+	& > div:first-child {
+		margin-left: 1rem;
+	}
+
+	& > div {
+		margin: 0 0.3rem;
+	}
+}
+
+.tag-element {
+	background-color: var(--tag-primary-color);
+	color: white;
+	padding: 1rem;
+	width: 6rem;
+	height: 8rem;
+	display: flex;
+	overflow-x: scroll;
+	-webkit-hyphens: auto;
+	hyphens: auto;
+	align-items: center;
+	justify-content: center;
+	border-radius: 0 1rem 1rem 0;
+	padding-left: 2rem;
+	position: relative;
+	word-wrap: break-all;
+	text-align: center;
+	min-width: 6rem;
+
+	&::after {
+		content: " ";
+		position: absolute;
+		background-color: #d80088;
+		width: 1rem;
+		height: 100%;
+		left: 0;
+		top: 0;
+	}
+
+	& > .fa {
+		font-size: 1.5rem;
+		position: absolute;
+		left: 0.5rem;
+		z-index: 10;
+		top: 0.5rem;
+	}
+
+	&--new::after {
+		background-color: #757575;
+	}
+
+	&--new {
+		background-color: var(--font-dark-grey);
 	}
 }
 
