@@ -8,3 +8,4 @@ export const CREATE_TAG = "create_tag";
 export const CHECK_TAG = "check_tag";
 export const ADD_TAG = "add_tag";
 export const EQUAL_TAG = "equal_tag";
+export const CLEAR_NOTE = "clear_note";

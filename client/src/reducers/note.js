@@ -1,4 +1,10 @@
-import { GET_NOTE, GET_NOTES, CREATE_NOTE, EDIT_NOTE } from "../actions/types";
+import {
+	GET_NOTE,
+	GET_NOTES,
+	CREATE_NOTE,
+	EDIT_NOTE,
+	CLEAR_NOTE
+} from "../actions/types";
 
 export default function(state = {}, action) {
 	switch (action.type) {
@@ -10,6 +16,8 @@ export default function(state = {}, action) {
 			return { ...state, [action.payload.id]: action.payload };
 		case EDIT_NOTE:
 			return { ...state, [action.payload.id]: action.payload };
+		case CLEAR_NOTE:
+			return { ...state, note: {} };
 		default:
 			return state;
 	}

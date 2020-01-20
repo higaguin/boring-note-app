@@ -7,7 +7,8 @@ import {
 	CREATE_TAG,
 	CHECK_TAG,
 	ADD_TAG,
-	EQUAL_TAG
+	EQUAL_TAG,
+	CLEAR_NOTE
 } from "./types";
 
 export const signIn = token => async dispatch => {
@@ -36,8 +37,8 @@ export const createNote = noteData => async dispatch => {
 	dispatch({ type: CREATE_NOTE, payload: response.data });
 };
 
-export const editNote = noteData => async dispatch => {
-	const response = await api.post("/note/edit/:id", noteData);
+export const editNote = (noteId, noteData) => async dispatch => {
+	const response = await api.put(`/note/edit/${noteId}`, noteData);
 
 	dispatch({ type: CREATE_NOTE, payload: response.data });
 };
@@ -60,4 +61,8 @@ export const addTag = tag => {
 
 export const equalTag = tag => {
 	return { type: EQUAL_TAG, payload: tag };
+};
+
+export const clearNote = () => {
+	return { type: CLEAR_NOTE, payload: "" };
 };
