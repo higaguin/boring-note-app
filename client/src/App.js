@@ -2,6 +2,7 @@ import React from "react";
 import LoginPage from "./components/LoginPage";
 import NotePage from "./components/NotePage";
 import NoteCreate from "./components/NoteCreate";
+import NoteEdit from "./components/NoteEdit";
 import Header from "./components/Header";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
 import { createBrowserHistory } from "history";
@@ -40,6 +41,7 @@ function App() {
 					{/* <Route path="/note" exact component={NoteCreate} /> */}
 					<PrivateRoute path="/" exact component={NotePage} />
 					<PrivateRoute path="/note" exact component={NoteCreate} />
+					<PrivateRoute path="/note/edit/:id" exact component={NoteEdit} />
 				</Switch>
 			</div>
 		</Router>

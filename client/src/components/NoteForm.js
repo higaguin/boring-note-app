@@ -14,15 +14,18 @@ class NoteForm extends React.Component {
 			props.onSubmit({
 				title: values.title,
 				text: values.note,
-				tags: this.props.tag_collection.map(tag => tag._id)
+				tags: this.props.tag.tag_collection.map(tag => tag._id)
 			});
 		};
 	}
 
 	render() {
+		const { note, tags } = this.props;
+		console.log(tags);
+
 		return (
 			<>
-				<TagList></TagList>
+				<TagList tags={tags}></TagList>
 				<form onSubmit={this.props.handleSubmit(this.submit)} className="form">
 					<Field
 						name="title"
@@ -61,11 +64,22 @@ const validate = values => {
 };
 
 const mapStateToProps = state => {
-	// console.log(state);
-	return state.tag;
+	return {
+		tag: state.tag,
+		initialValues: {
+			title: state.note.note.title,
+			note: state.note.note.text
+		},
+		tags: state.note.note.tags
+	};
 };
 
 export default connect(
 	mapStateToProps,
 	{}
-)(reduxForm({ form: "formValidation", validate })(NoteForm));
+)(
+	reduxForm({
+		form: "formValidation",
+		validate
+	})(NoteForm)
+);

@@ -1,11 +1,14 @@
 import React from "react";
 import TagForm from "./TagForm";
 import { connect } from "react-redux";
-import { createTag, checkTag, addTag } from "../actions";
+import { createTag, checkTag, addTag, equalTag } from "../actions";
 
 class TagList extends React.Component {
 	constructor(props) {
 		super(props);
+		if (props.tags) {
+			props.equalTag(props.tags);
+		}
 
 		this.state = { isNew: false };
 
@@ -50,7 +53,6 @@ class TagList extends React.Component {
 
 	render() {
 		const { tag_collection } = this.props;
-		console.log(this.props);
 
 		let newComponent;
 		if (this.state.isNew) {
@@ -82,6 +84,9 @@ const mapStateToProps = state => {
 	return state.tag;
 };
 
-export default connect(mapStateToProps, { createTag, checkTag, addTag })(
-	TagList
-);
+export default connect(mapStateToProps, {
+	createTag,
+	checkTag,
+	addTag,
+	equalTag
+})(TagList);

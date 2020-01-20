@@ -142,6 +142,7 @@
 }
 
 .note-element {
+	position: relative;
 	border-bottom: 2px solid var(--font-dark-grey);
 
 	&__title {
@@ -150,6 +151,11 @@
 
 	&__text {
 		// margin-bottom: 1rem;
+	}
+
+	&__edit {
+		position: absolute;
+		right: 0;
 	}
 
 	& > * {

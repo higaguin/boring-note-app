@@ -28,7 +28,7 @@ class NotePage extends React.Component {
 					<NewNoteCard onClickNew={this.onClickNew} />
 				</div>
 				<div>
-					<NoteList notes={this.state.notes} />
+					<NoteList notes={this.state.notes} history={this.props.history} />
 				</div>
 			</div>
 		);

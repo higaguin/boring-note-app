@@ -3,7 +3,8 @@ import {
 	CREATE_NOTE,
 	CREATE_TAG,
 	CHECK_TAG,
-	ADD_TAG
+	ADD_TAG,
+	EQUAL_TAG
 } from "../actions/types";
 
 export default function(state = { tag_collection: [] }, action) {
@@ -20,6 +21,11 @@ export default function(state = { tag_collection: [] }, action) {
 			return {
 				...state,
 				tag_collection: [...state.tag_collection, action.payload]
+			};
+		case EQUAL_TAG:
+			return {
+				...state,
+				tag_collection: action.payload
 			};
 		default:
 			return state;
