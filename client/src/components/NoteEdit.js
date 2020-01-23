@@ -29,14 +29,12 @@ class NoteEdit extends React.Component {
 
 		if (!note) return <div></div>;
 		if (Object.keys(note).length === 0) return <div></div>;
-		console.log(note);
 
 		return <NoteForm onSubmit={this.onSubmit} note={note}></NoteForm>;
 	}
 }
 
 const mapStateToProps = state => {
-	console.log(state);
 	return state.note;
 };
 

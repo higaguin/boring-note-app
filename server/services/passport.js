@@ -30,26 +30,26 @@ const ExtractJwt = require("passport-jwt").ExtractJwt;
 // );
 
 passport.use(
-  new FacebookTokenStrategy(
-    {
-      clientID: keys.facebookClientID,
-      clientSecret: keys.facebookClientSecret,
-      fbGraphVersion: "v3.0"
-    },
-    function(accessToken, refreshToken, profile, done) {
-      models.User.findOne({ facebookId: profile.id }).then(existingUser => {
-        if (existingUser) {
-          return done(null, existingUser);
-          //   done(null, existingUser);
-        } else {
-          new models.User({ facebookId: profile.id }).save().then(user => {
-            return done(null, user);
-            // done(null, user);
-          });
-        }
-      });
-    }
-  )
+	new FacebookTokenStrategy(
+		{
+			clientID: keys.facebookClientID,
+			clientSecret: keys.facebookClientSecret,
+			fbGraphVersion: "v3.0"
+		},
+		function(accessToken, refreshToken, profile, done) {
+			models.User.findOne({ facebookId: profile.id }).then(existingUser => {
+				if (existingUser) {
+					return done(null, existingUser);
+					//   done(null, existingUser);
+				} else {
+					new models.User({ facebookId: profile.id }).save().then(user => {
+						return done(null, user);
+						// done(null, user);
+					});
+				}
+			});
+		}
+	)
 );
 
 var opts = {};
@@ -57,21 +57,20 @@ opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = keys.jwtSecret;
 
 passport.use(
-  new JwtStrategy(opts, function(jwt_payload, done) {
-    try {
-      User.findOne({ id: jwt_payload.id }, function(err, user) {
-        if (err) {
-          return done(err, false);
-        }
-        if (user) {
-          console.log("miaus");
-          return done(null, user);
-        } else {
-          return done(null, false);
-        }
-      });
-    } catch (e) {
-      return done(e, false);
-    }
-  })
+	new JwtStrategy(opts, function(jwt_payload, done) {
+		try {
+			User.findOne({ id: jwt_payload.id }, function(err, user) {
+				if (err) {
+					return done(err, false);
+				}
+				if (user) {
+					return done(null, user);
+				} else {
+					return done(null, false);
+				}
+			});
+		} catch (e) {
+			return done(e, false);
+		}
+	})
 );

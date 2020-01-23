@@ -7,7 +7,6 @@ class TagList extends React.Component {
 	constructor(props) {
 		super(props);
 		if (props.tags) {
-			console.log(props.tags);
 			props.equalTag(props.tags);
 		}
 

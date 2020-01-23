@@ -8,7 +8,9 @@ import {
 	CHECK_TAG,
 	ADD_TAG,
 	EQUAL_TAG,
-	CLEAR_NOTE
+	CLEAR_NOTE,
+	DELETE_NOTE,
+	CHANGE_MODE
 } from "./types";
 
 export const signIn = token => async dispatch => {
@@ -43,6 +45,12 @@ export const editNote = (noteId, noteData) => async dispatch => {
 	dispatch({ type: CREATE_NOTE, payload: response.data });
 };
 
+export const removeNote = noteId => async dispatch => {
+	const response = await api.delete(`/note/remove/${noteId}`);
+
+	dispatch({ type: DELETE_NOTE, payload: response.data });
+};
+
 export const createTag = tagData => async dispatch => {
 	const response = await api.post("/tag/save", tagData);
 
@@ -65,4 +73,8 @@ export const equalTag = tag => {
 
 export const clearNote = () => {
 	return { type: CLEAR_NOTE, payload: "" };
+};
+
+export const changeMode = () => {
+	return { type: CHANGE_MODE, payload: "" };
 };

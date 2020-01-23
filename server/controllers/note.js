@@ -64,7 +64,7 @@ noteController.deleteNote = (req, res) => {
 			return res
 				.status(500)
 				.send("There was a problem deleting the information to the database.");
-		return res.status(200).send(`Note was deleted`);
+		return res.status(200).send(req.params.id);
 	});
 };
 

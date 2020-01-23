@@ -15,12 +15,6 @@ class NotePage extends React.Component {
 		};
 	}
 
-	componentDidMount() {
-		this.props.getNotes().then(() => {
-			this.setState({ notes: this.props.notes });
-		});
-	}
-
 	render() {
 		return (
 			<div className="main-container">
@@ -28,7 +22,7 @@ class NotePage extends React.Component {
 					<NewNoteCard onClickNew={this.onClickNew} />
 				</div>
 				<div>
-					<NoteList notes={this.state.notes} history={this.props.history} />
+					<NoteList history={this.props.history} />
 				</div>
 			</div>
 		);

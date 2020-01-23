@@ -3,7 +3,8 @@ import {
 	GET_NOTES,
 	CREATE_NOTE,
 	EDIT_NOTE,
-	CLEAR_NOTE
+	CLEAR_NOTE,
+	DELETE_NOTE
 } from "../actions/types";
 
 export default function(state = {}, action) {
@@ -16,6 +17,11 @@ export default function(state = {}, action) {
 			return { ...state, [action.payload.id]: action.payload };
 		case EDIT_NOTE:
 			return { ...state, [action.payload.id]: action.payload };
+		case DELETE_NOTE:
+			return {
+				...state,
+				notes: state.notes.filter(note => note._id !== action.payload)
+			};
 		case CLEAR_NOTE:
 			return { ...state, note: {} };
 		default:

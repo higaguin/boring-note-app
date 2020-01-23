@@ -9,3 +9,5 @@ export const CHECK_TAG = "check_tag";
 export const ADD_TAG = "add_tag";
 export const EQUAL_TAG = "equal_tag";
 export const CLEAR_NOTE = "clear_note";
+export const DELETE_NOTE = "delete_note";
+export const CHANGE_MODE = "change_mode";

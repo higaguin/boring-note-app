@@ -28,7 +28,6 @@ tagController.createTag = (req, res) => {
 			user: req.user._id
 		},
 		function(err, tag) {
-			console.log(err);
 			if (err)
 				return res
 					.status(500)

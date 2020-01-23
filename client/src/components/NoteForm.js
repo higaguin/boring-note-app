@@ -66,11 +66,13 @@ const validate = values => {
 const mapStateToProps = state => {
 	return {
 		tag: state.tag,
-		initialValues: {
-			title: state.note.note.title,
-			note: state.note.note.text
-		},
-		tags: state.note.note.tags
+		initialValues: state.note.note
+			? {
+					title: state.note.note.title,
+					note: state.note.note.text
+			  }
+			: { title: "", note: "" },
+		tags: state.note.note ? state.note.note.tags : []
 	};
 };
 
