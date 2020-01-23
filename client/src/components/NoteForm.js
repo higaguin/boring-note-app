@@ -1,28 +1,44 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { renderInput, renderTextArea } from "../utils/formRenders";
+import TagList from "./TagList";
+import { connect } from "react-redux";
 
 class NoteForm extends React.Component {
 	constructor(props) {
 		super(props);
 
+		this.state = { tags: [] };
+
 		this.submit = values => {
 			props.onSubmit({
 				title: values.title,
-				text: values.note
+				text: values.note,
+				tags: this.props.tag.tag_collection.map(tag => tag._id)
 			});
 		};
 	}
 
 	render() {
+		const { note, tags } = this.props;
+		// console.log(tags);
+
 		return (
-			<form onSubmit={this.props.handleSubmit(this.submit)} className="form">
-				<Field name="title" type="text" label="Title" component={renderInput} />
-				<Field name="note" label="Note" component={renderTextArea} />
-				<button className="btn btn--primary" type="submit">
-					Save Note
-				</button>
-			</form>
+			<>
+				<TagList tags={tags}></TagList>
+				<form onSubmit={this.props.handleSubmit(this.submit)} className="form">
+					<Field
+						name="title"
+						type="text"
+						label="Title"
+						component={renderInput}
+					/>
+					<Field name="note" label="Note" component={renderTextArea} />
+					<button className="btn btn--primary" type="submit">
+						Save Note
+					</button>
+				</form>
+			</>
 		);
 	}
 }
@@ -47,4 +63,25 @@ const validate = values => {
 	return errors;
 };
 
-export default reduxForm({ form: "formValidation", validate })(NoteForm);
+const mapStateToProps = state => {
+	return {
+		tag: state.tag,
+		initialValues: state.note.note
+			? {
+					title: state.note.note.title,
+					note: state.note.note.text
+			  }
+			: { title: "", note: "" },
+		tags: state.note.note ? state.note.note.tags : []
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	{}
+)(
+	reduxForm({
+		form: "formValidation",
+		validate
+	})(NoteForm)
+);

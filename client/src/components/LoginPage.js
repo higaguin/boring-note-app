@@ -4,33 +4,35 @@ import { connect } from "react-redux";
 import { signIn } from "../actions";
 
 class LoginPage extends React.Component {
-  //   responseFacebook(response) {
-  //     this.props.signIn(response);
-  //   }
-  //fsdfd
+	//   responseFacebook(response) {
+	//     this.props.signIn(response);
+	//   }
+	//fsdfd
 
-  render() {
-    console.log(this.props);
-    return (
-      <div className="App">
-        <FacebookLogin
-          appId="2415591195382213"
-          textButton="Facebook"
-          callback={response => {
-            this.props.signIn(response.accessToken).then(() => {
-              localStorage.setItem("token", this.props.token);
-              this.props.history.push("/");
-            });
-          }}
-          fields="name,email,picture"
-        />
-      </div>
-    );
-  }
+	render() {
+		return (
+			<div className="login-container">
+				<span>For now, log in only with</span>
+				<FacebookLogin
+					appId="2415591195382213"
+					textButton="Facebook"
+					cssClass="my-facebook-button-class"
+					callback={response => {
+						this.props.signIn(response.accessToken).then(() => {
+							localStorage.setItem("isAuth", true);
+							localStorage.setItem("token", this.props.token);
+							this.props.history.push("/");
+						});
+					}}
+					fields="name,email,picture"
+				/>
+			</div>
+		);
+	}
 }
 
 const mapStateToProps = state => {
-  return state.authentication;
+	return state.authentication;
 };
 
 export default connect(mapStateToProps, { signIn })(LoginPage);
