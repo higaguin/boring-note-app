@@ -21,7 +21,6 @@ class NoteForm extends React.Component {
 
 	render() {
 		const { note, tags } = this.props;
-		// console.log(tags);
 
 		return (
 			<>

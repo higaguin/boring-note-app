@@ -1,13 +1,18 @@
 import React from "react";
 import FacebookLogin from "react-facebook-login";
 import { connect } from "react-redux";
-import { signIn } from "../actions";
+import { signIn, changeLoad } from "../actions";
 
 class LoginPage extends React.Component {
 	//   responseFacebook(response) {
 	//     this.props.signIn(response);
 	//   }
 	//fsdfd
+	constructor(props) {
+		super(props);
+
+		props.changeLoad(false);
+	}
 
 	render() {
 		return (
@@ -35,4 +40,4 @@ const mapStateToProps = state => {
 	return state.authentication;
 };
 
-export default connect(mapStateToProps, { signIn })(LoginPage);
+export default connect(mapStateToProps, { signIn, changeLoad })(LoginPage);

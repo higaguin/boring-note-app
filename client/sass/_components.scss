@@ -85,6 +85,7 @@
 .tag-list {
 	display: flex;
 	overflow-x: scroll;
+	overflow: hidden;
 
 	& > div:first-child {
 		margin-left: 1rem;
@@ -102,7 +103,6 @@
 	width: 6rem;
 	height: 8rem;
 	display: flex;
-	overflow-x: scroll;
 	-webkit-hyphens: auto;
 	hyphens: auto;
 	align-items: center;
@@ -143,6 +143,7 @@
 
 .note-element {
 	position: relative;
+	word-break: break-all;
 	border-bottom: 2px solid var(--font-dark-grey);
 
 	&__title {
@@ -156,6 +157,7 @@
 	&__edit {
 		position: absolute;
 		right: 0;
+		z-index: 50;
 	}
 
 	&__times {

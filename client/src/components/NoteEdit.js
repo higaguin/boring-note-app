@@ -1,14 +1,26 @@
 import React from "react";
 import NoteForm from "./NoteForm";
 import { connect } from "react-redux";
-import { getNote, editNote, clearNote } from "../actions";
+import {
+	getNote,
+	editNote,
+	clearNote,
+	changeHeader,
+	changeLoad,
+	equalTag
+} from "../actions";
 
 class NoteEdit extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = { note: {} };
 
+		props.changeHeader("back");
+
+		props.changeLoad(true);
+
 		props.getNote(this.props.match.params.id).then(() => {
+			props.changeLoad(false);
 			this.setState({ note: props.note });
 		});
 
@@ -21,7 +33,7 @@ class NoteEdit extends React.Component {
 
 	componentWillUnmount() {
 		this.props.clearNote();
-		// console.log("componentWillUnmount");
+		this.props.equalTag([]);
 	}
 
 	render() {
@@ -38,6 +50,11 @@ const mapStateToProps = state => {
 	return state.note;
 };
 
-export default connect(mapStateToProps, { getNote, editNote, clearNote })(
-	NoteEdit
-);
+export default connect(mapStateToProps, {
+	getNote,
+	editNote,
+	clearNote,
+	changeHeader,
+	changeLoad,
+	equalTag
+})(NoteEdit);

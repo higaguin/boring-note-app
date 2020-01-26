@@ -1,11 +1,15 @@
 import React from "react";
 import NoteForm from "./NoteForm";
 import { connect } from "react-redux";
-import { createNote } from "../actions";
+import { createNote, changeHeader, changeLoad } from "../actions";
 
 class NoteCreate extends React.Component {
 	constructor(props) {
 		super(props);
+
+		props.changeLoad(false);
+
+		props.changeHeader("back");
 
 		this.onSubmit = formValues => {
 			props.createNote(formValues).then(() => {
@@ -19,4 +23,8 @@ class NoteCreate extends React.Component {
 	}
 }
 
-export default connect(null, { createNote })(NoteCreate);
+export default connect(null, {
+	createNote,
+	changeHeader,
+	changeLoad
+})(NoteCreate);

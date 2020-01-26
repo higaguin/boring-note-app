@@ -10,25 +10,63 @@ class Header extends React.Component {
 		this.onChangeMode = values => {
 			this.props.changeMode();
 		};
+
+		this.goBack = () => {
+			this.props.history.goBack();
+		};
+
+		this.signOut = () => {
+			localStorage.removeItem("isAuth");
+			localStorage.removeItem("token");
+
+			this.props.history.push("/login");
+		};
+	}
+
+	componentDidMount() {
+		const element = document.querySelector(".main-header__cornet-icon");
+		if (element) {
+			element.addEventListener("animationend", function() {
+				element.classList.remove("animated", "fadeIn");
+			});
+		}
 	}
 
 	render() {
 		const icon =
-			this.props.location.pathname === "/" ? (
+			localStorage.getItem("isAuth") === "true" ? (
+				this.props.header === "list" ? (
+					<i
+						className={`fa fa-${
+							this.props.mode === "edit" ? "pencil" : "times"
+						} main-header__cornet-icon animated fadeIn faster`}
+						onClick={this.onChangeMode}
+					></i>
+				) : (
+					<i
+						className={`fa fa-angle-left main-header__cornet-icon animated fadeIn faster`}
+						onClick={this.goBack}
+					></i>
+				)
+			) : (
+				<div></div>
+			);
+
+		const sign_out =
+			localStorage.getItem("isAuth") === "true" ? (
 				<i
-					className={`fa fa-${
-						this.props.mode === "edit" ? "pencil" : "times"
-					} main-header__cornet-icon`}
-					onClick={this.onChangeMode}
+					className={`fa fa-sign-out main-header__cornet-icon animated fadeIn faster`}
+					onClick={this.signOut}
 				></i>
 			) : (
-				""
+				<div></div>
 			);
 
 		return (
 			<div className="main-header">
 				{icon}
-				<div>Note App</div>
+				<div>Boring Note App</div>
+				{sign_out}
 			</div>
 		);
 	}
