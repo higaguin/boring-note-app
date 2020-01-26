@@ -10,7 +10,9 @@ import {
 	EQUAL_TAG,
 	CLEAR_NOTE,
 	DELETE_NOTE,
-	CHANGE_MODE
+	CHANGE_MODE,
+	CHANGE_LOAD,
+	CHANGE_HEADER
 } from "./types";
 
 export const signIn = token => async dispatch => {
@@ -77,4 +79,12 @@ export const clearNote = () => {
 
 export const changeMode = () => {
 	return { type: CHANGE_MODE, payload: "" };
+};
+
+export const changeLoad = load => {
+	return { type: CHANGE_LOAD, payload: load };
+};
+
+export const changeHeader = header => {
+	return { type: CHANGE_HEADER, payload: header };
 };

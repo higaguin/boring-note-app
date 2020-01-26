@@ -1,0 +1,18 @@
+sudo: required
+services: 
+  - docker
+
+before_install:
+  - wget -qO- https://toolbelt.heroku.com/install.sh | sh
+  - docker build -t higaguin/react-test -f ./client/Dockerfile.dev ./client
+  
+script:
+  - docker run -e CI=true higaguin/react-test npm test
+
+deploy:
+  provider: heroku
+  api_key: $HEROKU_API_KEY
+  edge: true
+  app: boring-note-app
+    on: 
+      branch: master

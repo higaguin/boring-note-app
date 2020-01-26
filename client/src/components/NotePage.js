@@ -1,12 +1,14 @@
 import React from "react";
 import NewNoteCard from "./NewNoteCard";
 import NoteList from "./NoteList";
+import { changeHeader } from "../actions";
 import { connect } from "react-redux";
-import { getNotes } from "../actions";
 
 class NotePage extends React.Component {
 	constructor(props) {
 		super(props);
+
+		props.changeHeader("list");
 
 		this.state = { notes: [] };
 
@@ -30,7 +32,7 @@ class NotePage extends React.Component {
 }
 
 const mapStateToProps = state => {
-	return state.note;
+	return { load: state.general.load, note: state.note };
 };
 
-export default connect(mapStateToProps, { getNotes })(NotePage);
+export default connect(mapStateToProps, { changeHeader })(NotePage);
