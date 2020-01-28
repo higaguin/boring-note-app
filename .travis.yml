@@ -8,16 +8,16 @@ before_install:
   - wget -qO- https://toolbelt.heroku.com/install.sh | sh
   - docker build -t higaguin/react-test -f ./client/Dockerfile.dev ./client
 
-script:
-  - docker run -e CI=true higaguin/react-test npm test
-# jobs:
-#   include:
-#   - stage: deploy to heroku
-#     language: node_js
-#     deploy:
-#       provider: heroku
-#       api_key: $HEROKU_API_KEY
-#       edge: true
-#       app: boring-note-app
-#         on:
-#           branch: master
+# script:
+#   - docker run -e CI=true higaguin/react-test npm test
+jobs:
+  include:
+  - stage: deploy to heroku
+    language: node_js
+    deploy:
+      provider: heroku
+      api_key: $HEROKU_API_KEY
+      edge: true
+      app: boring-note-app
+        on:
+          branch: master
