@@ -12,11 +12,9 @@
 #   - docker run -e CI=true higaguin/react-test npm test
 jobs:
   include:
-  - stage: deploy to heroku
-    language: node_js
-    deploy:
-      provider: heroku
-      api_key: $HEROKU_API_KEY
-      app: boring-note-app
-        on:
-          branch: master
+    - stage: deploy to heroku
+      language: node_js
+      deploy:
+        provider: heroku
+        api_key: $HEROKU_API_KEY
+        app: boring-note-app
