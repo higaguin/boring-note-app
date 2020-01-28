@@ -18,6 +18,6 @@ jobs:
       deploy:
         provider: heroku
         api_key: $HEROKU_API_KEY
-        app: boring-note-app
+        app: boring-note-app-api
         on:
           branch: master
