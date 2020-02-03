@@ -26,8 +26,7 @@ jobs:
       before_install: cd client
       deploy:
         provider: netlify
-        site: cranky-franklin-0be987
-        auth: f2013e0c-2ac7-4a0f-b5ed-f002a9413603
+        site: $NETLIFY_ID
         dir: "dist/"
         edge: true
         on:
