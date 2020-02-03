@@ -25,6 +25,7 @@ jobs:
       deploy:
         provider: netlify
         site: $NETLIFY_ID
+        auth: $NETLIFY_AUTH
         dir: "dist/"
         edge: true
         on:
