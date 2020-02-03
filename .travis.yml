@@ -29,5 +29,6 @@ jobs:
         auth: $NETLIFY_AUTH
         dir: "dist/"
         edge: true
+        prod: true
         on:
           branch: master
