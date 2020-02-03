@@ -1,0 +1,218 @@
+:root {
+  --background-color: #f0ecf4;
+  --tag-primary-color: #ff3cb7;
+  --tag-secondary-color: #d80088;
+  --font-dark-grey: #bdbdbd; }
+
+* {
+  margin: 0;
+  padding: 0; }
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit; }
+
+html {
+  box-sizing: border-box;
+  font-size: 100%; }
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  background-color: var(--background-color); }
+
+#root > div:first-child {
+  height: 100%;
+  width: 100%;
+  position: absolute; }
+
+.main-header {
+  padding: 1rem;
+  width: 100%;
+  color: var(--font-dark-grey);
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
+  .main-header__cornet-icon {
+    font-size: 1.5rem; }
+
+.main-container {
+  width: 100%;
+  padding: 0px 2rem;
+  height: calc(100% - 52px);
+  display: flex;
+  flex-direction: column; }
+  .main-container > div:first-child {
+    padding: 1.5rem 0; }
+  .main-container > div:last-child {
+    flex: 1; }
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100% - 52px);
+  align-items: center; }
+  .login-container > span:first-child {
+    padding: 1rem;
+    color: var(--font-dark-grey); }
+
+.list-container {
+  padding: 2rem;
+  background-color: white;
+  border-radius: 30px 30px 0px 0px;
+  height: 100%; }
+  .list-container > .note-element:not(:first-child) {
+    padding-top: 1rem; }
+
+.modal-screen {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  z-index: 2; }
+  .modal-screen .sk-double-bounce {
+    margin: unset;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    z-index: 23; }
+  .modal-screen .sk-child {
+    background-color: white; }
+
+.delay-1 {
+  animation-delay: 0.1s; }
+
+.delay-2 {
+  animation-delay: 0.2s; }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem; }
+  .form > * {
+    padding: 1rem 0; }
+
+.form-input {
+  padding: 0.5rem;
+  border-radius: 3px;
+  border: 1px solid var(--font-dark-grey);
+  width: 100%; }
+  .form-input::placeholder {
+    color: var(--font-dark-grey); }
+
+.form-area {
+  padding: 0.5rem;
+  border-radius: 3px;
+  border: 1px solid var(--font-dark-grey);
+  width: 100%;
+  resize: none; }
+  .form-area::placeholder {
+    color: var(--font-dark-grey); }
+
+.form-error {
+  color: #e53935;
+  padding: 5px; }
+
+.tag-form-container {
+  background-color: var(--font-dark-grey);
+  padding: 1rem; }
+
+.btn {
+  border: none;
+  border-radius: 0.5rem;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 1rem; }
+  .btn--primary {
+    background-color: #5c6bc0;
+    color: white; }
+  .btn--naked {
+    background-color: transparent;
+    color: white; }
+
+.my-facebook-button-class {
+  border: none;
+  border-radius: 0.5rem;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 1rem;
+  padding: 1rem 3rem;
+  background-color: #5146b5;
+  color: white;
+  letter-spacing: 1.5px;
+  font-weight: bold; }
+
+.add-note {
+  display: flex;
+  padding: 0.5rem;
+  font-size: 2rem;
+  align-items: center;
+  cursor: pointer; }
+  .add-note .fa-plus {
+    margin-right: 1rem; }
+
+.tag-list {
+  display: flex;
+  overflow-x: scroll;
+  overflow: hidden; }
+  .tag-list > div:first-child {
+    margin-left: 1rem; }
+  .tag-list > div {
+    margin: 0 0.3rem; }
+
+.tag-element {
+  background-color: var(--tag-primary-color);
+  color: white;
+  padding: 1rem;
+  width: 6rem;
+  height: 8rem;
+  display: flex;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 1rem 1rem 0;
+  padding-left: 2rem;
+  position: relative;
+  word-wrap: break-all;
+  text-align: center;
+  min-width: 6rem; }
+  .tag-element::after {
+    content: " ";
+    position: absolute;
+    background-color: #d80088;
+    width: 1rem;
+    height: 100%;
+    left: 0;
+    top: 0; }
+  .tag-element > .fa {
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0.5rem;
+    z-index: 10;
+    top: 0.5rem; }
+  .tag-element--new::after {
+    background-color: #757575; }
+  .tag-element--new {
+    background-color: var(--font-dark-grey); }
+
+.note-element {
+  position: relative;
+  word-break: break-all;
+  border-bottom: 2px solid var(--font-dark-grey); }
+  .note-element__title {
+    font-size: 2rem; }
+  .note-element__edit {
+    position: absolute;
+    right: 0;
+    z-index: 50; }
+  .note-element__times {
+    position: absolute;
+    right: 0; }
+  .note-element > * {
+    margin-bottom: 1rem;
+    padding: 0 1rem; }
+
+.note-footer__created {
+  color: var(--font-dark-grey); }
+
