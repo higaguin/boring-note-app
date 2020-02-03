@@ -24,8 +24,11 @@ jobs:
     - stage: deply to netlify
       language: node_js
       before_install: cd client
-      provider: netlify
-      site: cranky-franklin-0be987
-      auth: f2013e0c-2ac7-4a0f-b5ed-f002a9413603
-      dir: "dist/"
-      edge: true
+      deploy:
+        provider: netlify
+        site: cranky-franklin-0be987
+        auth: f2013e0c-2ac7-4a0f-b5ed-f002a9413603
+        dir: "dist/"
+        edge: true
+        on:
+          branch: master
