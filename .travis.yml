@@ -21,3 +21,8 @@ jobs:
         app: boring-note-app-api
         on:
           branch: master
+    - stage: deply to netlify
+      provider: netlify
+      site: cranky-franklin-0be987
+      auth: f2013e0c-2ac7-4a0f-b5ed-f002a9413603
+      edge: true
