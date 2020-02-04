@@ -21,8 +21,12 @@ jobs:
         on:
           branch: master
     - stage: deply to netlify
+      # before_install:
+      #   - npm install -g netlify-cli
       language: node_js
-      before_install: cd client
+      before_install:
+        - cd client
+        - npm install -g netlify-cli
       deploy:
         provider: netlify
         site: $NETLIFY_ID
