@@ -18,7 +18,7 @@
 		"lodash": "^4.17.15"
 	},
 	"scripts": {
-		"build": "npm run clean && webpack",
+		"build": "npm run clean && webpack --mode=production",
 		"test": "echo \"Error: no test specified\" && exit 0",
 		"start": "webpack-dev-server --host 0.0.0.0 --watch",
 		"clean": "rimraf dist"
