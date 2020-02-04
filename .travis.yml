@@ -24,9 +24,9 @@ jobs:
       # before_install:
       #   - npm install -g netlify-cli
       language: node_js
-      before_install:
-        - cd client
-        - npm install -g netlify-cli
+      node_js:
+        - "stable"
+      before_install: cd client
       deploy:
         provider: netlify
         site: $NETLIFY_ID
